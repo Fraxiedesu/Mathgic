@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+				<meta charset="utf-8">
+				<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+				<title>Hello, World!</title>
+				
+				<style>
+				*{
+								padding: 0;
+								margin: 0;
+								text-decoration: none;
+								list-style: none;
+					 font-family: sans-serif;
+				}
+				
+				body{
+								height: 100vh;
+								width: 100vw;
+								background: linear-gradient(105deg, red, purple, blue);
+								display: flex;
+								flex-direction: row;
+								align-items: center;
+								justify-content: center;
+				}
+				
+				div{
+								width: 80vw;
+								max-height: 50vh;
+								padding: 20px;
+								border: 1px solid;
+								border-radius: 10px;
+								display: flex;
+								flex-direction: column;
+								align-items: center;
+								background: rgba(255, 255, 255, 0.1);
+								backdrop-filter: blur(15px);
+								gap: 20px;
+				}
+				
+				h1{
+								color: white;
+								font-size: 25px;
+								font-weight: 900;
+				}
+				
+				p{
+								color: white;
+								font-size: 20px;
+								font-weight: 700;
+   text-align: center;
+				}
+				
+				input{
+								height: 30px;
+								width: 240px;
+								border: 1px solid;
+								border-radius: 5px;
+								text-indent: 10px;
+								visibility: hidden;
+				}
+				
+				button{
+								height: 35px;
+								width: 100px;
+								border: 1px solid;
+								border-radius: 10px;
+				}
+				</style>
+				
+</head>
+<body>
+				<div>
+								<h1 class="header">
+												Welcome to my game!
+								</h1>
+								<p class="parag">
+												Click the next button to proceed to 1st phase.
+								</p>
+								<input type="text" class="input">
+								<button type="button" class="btn">Next</button>
+				</div>
+				
+				<script>
+   const head = document.querySelector('.header');
+   const par = document.querySelector('.parag');
+   const input = document.querySelector('.input');
+   const button = document.querySelector('.btn');
+				let i = 0;
+				let z;
+				let y;
+				let x;
+
+   button.addEventListener('click', () => {
+   const uinput = input.value;
+
+   if (i == 0) {
+   				i = 1;
+     head.textContent = "1st Phase";
+     par.textContent = "Think of any 4 or more digits number. (ex: 1234 or 8237262)";
+   } else if (i == 1){
+   				i = 2;
+     head.textContent = "2nd Phase";
+     par.textContent = "Add every digit of the number. (ex: 1+2+3+4 = 10)";
+   } else if (i == 2){
+   				i = 3;
+     head.textContent = "3rd Phase";
+     par.textContent = "Now, Subtract the sum of every digit to the main number. (ex: 1234 - 10 = 1224)";
+   } else if (i == 3){
+   				i = 4;
+   				head.textContent = "4th Phase";
+   				par.textContent = "Now you have the difference between the sum and the main number."
+   } else if (i == 4){
+   		 i = 5;
+     head.textContent = "Last Phase";
+     par.textContent = "Hide a digit in the difference you got and I'll guess the number you hid. (ex: instead of 1224, you have to say 241)";
+   } else if (i == 5){
+   				i = 6;
+   				head.textContent = "Where magic happens.";
+   				par.textContent = "Enter the the numbers on ur mind in any order. (0 cannot be hidden)";
+   				input.style.visibility = "visible";
+   				button.textContent = "Submit";
+   } else if (i == 6){
+   				z = 9 - (uinput % 9);
+   				if (z == 0){
+   								z = 9;
+   								head.textContent = "The number you hid is " + z + "!";
+   				par.textContent = "Wow, Magic!";
+   				input.style.visibility = "hidden";
+   				button.style.visibility = "hidden";
+   				} else {
+   								head.textContent = "The number you hid is " + z + "!";
+   				par.textContent = "Wow, Magic!";
+   				input.style.visibility = "hidden";
+   				button.style.visibility = "hidden";
+   				}
+   }
+   });
+</script>
+				
+</body>
+</html>
